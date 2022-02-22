@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- <div>
+  <h2>Users</h2>
+  <ul>
+      <div><li>One User</li>
+          <h3>Profile</h3>-><h3>Wishes</h3>/<h3>Friends</h3>
+          <ul>
+            <p>Wish name  <li>My first wish is a genie lamp<a href="#"></a></li>Wish One - View Wish</p>  add high priority-->
+            <!-- <p>Wish name <li>My first wish is the genie himself<a href="#"></a></li>Wish Two - View Wish</p>  add mid priority-->
+            <!-- <p> Wish name <li>My first wish is whatever you think is nice<a href="#"></a></li>Wish Three - View Wish</p>  add low priority-->
+          <!-- </ul>            
+      </div>
+  </ul> -->
+<!-- </div> -->
+
+  <h1>Gift Selector - </h1>
+  <div><p class='totalCost' >Total gift cost:<span id="cost-el">...</span></p></div>
+      <form>         
+         <label for="food-select">Select Food </label>
+        <select class="itemSelect">
+            <option>Please select an option</option>
+          <option >Pumpkin Cake -$12 </option>
+          <option >Cocoa Biscuit - $12 </option>
+          <option >Cassava Flakes - $2 </option>
+          <option>Jam and Bread - $3 </option>
+      </select>
+    
+  </form>
+
+ 
+  <div>
+      <form>
+          <label>Select Transport</label>
+      <select class="itemSelect">           
+        <option>Please select an option</option>
+          <option>Legedize Benz - $15</option>
+          <option>Bicycle - $12 </option>
+          <option>Wheel Barrow- $8 </option>
+          <option >Keke - $18 </option>
+          <option >Maruwa - $8</option>
+
+      </select>
+  </form>
+  
+  </div>
+
+  <p>Add Balloons?</p>
+  <input type="checkbox">
+
+  <button id='costCal' class="btn" type="button" >Calculate</button>
+
+  <script>
+
+const totalCost = document.querySelector('#cost-el')
+const costCal =document.querySelector('#costCal')
+const itemSelect = document.querySelectorAll('.itemSelect');
+
+let totalArr = []
+
+itemSelect.forEach(item => item.addEventListener('input', function(e){
+
+let selectString =e.target.value.slice(e.target.value.length -2)
+
+if(selectString.includes('$')){
+let newString = selectString.slice(selectString.length -1)
+totalArr.push(Number(newString) )
+ 
+}else {
+totalArr.push(Number(selectString)) 
+}
+  } 
+
+))    
+let totalPrice = 0 
+costCal.addEventListener('click', ()=>{
+    totalArr.forEach(total => totalPrice += total)
+let costTotal = totalCost.innerHTML = totalPrice
+costTotal ? costCal.disabled = true:''
+})
+ 
+</script>
+</body>
+</html>
